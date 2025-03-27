@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-lg rounded">
+          <div class="card-header bg-primary text-white text-center">
+            <h4>Détails du Compte Bancaire</h4>
+          </div>
+          <div class="card-body">
+            <div class="info-section mb-4">
+              <h5 class="section-title">Informations du Titulaire</h5>
+              <p><strong>Nom Complet:</strong> {{ comptebancaire.user.first_name }} {{ comptebancaire.user.last_Name }}</p>
+              <p><strong>Email:</strong> {{ comptebancaire.user.email }}</p>
+              <p><strong>Téléphone:</strong> {{ comptebancaire.user.phone_Number }}</p>
+            </div>
+            <div class="info-section mb-4">
+              <h5 class="section-title">Informations du Compte</h5>
+              <p><strong>Solde:</strong> {{ comptebancaire.montant }} TND</p>
+            </div>
+            
+            <qrcode [qrdata]="getQRCodeData(comptebancaire)"></qrcode>
+  
+            <div class="text-center">
+              <a class="btn btn-back" routerLink="/listcomptebancaire">
+                <i class="fas fa-arrow-left"></i> Retour à la liste des comptes
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

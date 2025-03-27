@@ -1,13 +1,14 @@
 <div class="container mt-5 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-    <div class="card shadow-lg rounded" style="width: 100%; max-width: 600px;">
-      <div class="card-header bg-primary text-white text-center">
-        <h3>Ajouter un Compte Bancaire</h3>
-      </div>
-  
-      <div class="card-body">
-        <form [formGroup]="comptebancaireForm" (ngSubmit)="ajouter()">
-          <div class="form-group">
-            <label for="montant" class="font-weight-bold">Montant</label>
+  <div class="card shadow-lg rounded" style="width: 100%; max-width: 600px;">
+    <div class="card-header bg-primary text-white text-center">
+      <h3>Ajouter un Compte Bancaire</h3>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="comptebancaireForm" (ngSubmit)="ajouter()">
+        <div class="form-group">
+          <label for="montant" class="font-weight-bold">Montant</label>
+          <div class="input-group">
             <input
               type="number"
               id="montant"
@@ -16,14 +17,16 @@
               placeholder="Entrez le montant"
               required
             />
-            <div *ngIf="comptebancaireForm.get('montant')?.invalid && comptebancaireForm.get('montant')?.touched" class="text-danger mt-2">
-              <small *ngIf="comptebancaireForm.get('montant')?.hasError('required')">Le montant est requis.</small>
-              <small *ngIf="comptebancaireForm.get('montant')?.hasError('min')">Le montant doit être supérieur à 0.</small>
-            </div>
           </div>
-  
-          <div class="form-group mt-4">
-            <label for="userId" class="font-weight-bold">Utilisateur</label>
+          <div *ngIf="comptebancaireForm.get('montant')?.invalid && comptebancaireForm.get('montant')?.touched" class="text-danger mt-2">
+            <small *ngIf="comptebancaireForm.get('montant')?.hasError('required')">Le montant est requis.</small>
+            <small *ngIf="comptebancaireForm.get('montant')?.hasError('min')">Le montant doit être supérieur à 0.</small>
+          </div>
+        </div>
+
+        <div class="form-group mt-4">
+          <label for="userId" class="font-weight-bold">Utilisateur</label>
+          <div class="input-group">
             <select
               id="userId"
               formControlName="userId"
@@ -33,75 +36,105 @@
               <option value="" disabled selected>Choisissez un utilisateur</option>
               <option *ngFor="let user of users" [value]="user.id_User">{{ user.first_name }} {{ user.last_Name }}</option>
             </select>
-            <div *ngIf="comptebancaireForm.get('userId')?.invalid && comptebancaireForm.get('userId')?.touched" class="text-danger mt-2">
-              <small *ngIf="comptebancaireForm.get('userId')?.hasError('required')">L'utilisateur est requis.</small>
-            </div>
           </div>
-  
-          <button type="submit" class="btn btn-primary btn-lg w-100 mt-4" [disabled]="comptebancaireForm.invalid">
-            Ajouter Compte Bancaire
-          </button>
-        </form>
-      </div>
+          <div *ngIf="comptebancaireForm.get('userId')?.invalid && comptebancaireForm.get('userId')?.touched" class="text-danger mt-2">
+            <small *ngIf="comptebancaireForm.get('userId')?.hasError('required')">L'utilisateur est requis.</small>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg w-100 mt-4" [disabled]="comptebancaireForm.invalid">
+          Ajouter Compte Bancaire
+        </button>
+      </form>
     </div>
   </div>
+</div>
+
+<!-- Custom CSS -->
+<style>
+  /* Container avec Flexbox pour centrer */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Pour occuper toute la hauteur de l'écran */
+  }
+
+  /* Carte */
+  .card {
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 20px;
+    background-color: #007bff;
+    text-align: center;
+  }
+
+  .card-body {
+    padding: 30px;
+  }
+
+  /* Champs de formulaire */
+  .form-control-lg {
+    height: 50px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Focus sur l'input */
+  .form-control-lg:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  }
+
+  /* Style du bouton */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Survol du bouton */
+  .btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+
+  /* Désactivation du bouton */
+  .btn-primary:disabled {
+    background-color: #d6e0f0;
+    border-color: #d6e0f0;
+    cursor: not-allowed;
+  }
+
+  /* Espacement entre les champs */
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  /* Message d'erreur avec couleur rouge */
+  .text-danger {
+    font-size: 14px;
+    font-weight: 600;
+    color: red;  /* Couleur rouge pour les messages d'erreur */
+  }
+
+  /* Marge entre le bouton et le formulaire */
+  .mt-4 {
+    margin-top: 1.5rem;
+  }
   
-  <!-- Custom CSS -->
-  <style>
-    /* Utilisation de Flexbox pour centrer le contenu */
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh; /* Pour occuper toute la hauteur de l'écran */
-    }
-  
-    .card {
-      border-radius: 15px;
-    }
-  
-    .card-header {
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      padding: 20px;
-      background-color: #007bff;
-    }
-  
-    .card-body {
-      padding: 30px;
-    }
-  
-    .form-control-lg {
-      height: 50px;
-      font-size: 16px;
-    }
-  
-    .btn-primary {
-      background-color: #007bff;
-      border-color: #007bff;
-      font-size: 18px;
-      padding: 15px;
-    }
-  
-    .btn-primary:disabled {
-      background-color: #d6e0f0;
-      border-color: #d6e0f0;
-    }
-  
-    .form-group {
-      margin-bottom: 20px;
-    }
-  
-    .text-danger {
-      font-size: 12px;
-    }
-  
-    .mt-4 {
-      margin-top: 1.5rem;
-    }
-  
-    .shadow-lg {
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-  </style>
-  
+  /* Bordures douces */
+  .input-group {
+    margin-bottom: 10px;
+  }
+</style>

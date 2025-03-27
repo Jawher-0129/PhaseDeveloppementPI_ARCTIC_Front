@@ -13,18 +13,28 @@ export class ComptebancaireService {
 
   constructor(private http:HttpClient) { }
 
-  getAllCompteBancaire(){
-    return this.http.get(this.url+"/getcomptebancaire");
+  getAllCompteBancaire() :Observable<CompteBancaire[]> {
+    return this.http.get<CompteBancaire[]>(this.url+"/getcomptebancaire");
   }
 
   addCompteBancaire(compteBancaire:CompteBancaire){
     return this.http.post(this.url+"/addcomptebancaire",compteBancaire);
   }
 
+  getCompteBancaireById(id:number) :Observable<CompteBancaire> {
+    return this.http.get<CompteBancaire>(this.url+"/getcomptebancaire/"+id);
+  }
+
+  deleteCompteBancaire(id:number) :Observable<CompteBancaire> {
+    return this.http.delete<CompteBancaire>(this.url+"/deletecomptebancaire/"+id);
+  }
+
   getUsers() :Observable<User[]>
   {
     return this.http.get<User[]>("http://localhost:8089/skillswap/api/users");
   }
+
+  
 
 
 
