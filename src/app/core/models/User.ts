@@ -20,22 +20,22 @@ export enum Role {
     datePaiement: Date;
   }
   
-  export interface User {
-    id_User: number;
-    first_name: string;
-    last_Name: string;
-    date_Birthday: Date;
-    gender: string;
-    address: string;
-    email: string;
-    password: string;
-    role: Role;
-    photo: string;
-    phone_Number: string;
-    is_Activated: boolean;
-    created_At: Date;
+  export class User {
+    id_User?: number;
+    first_name!: string;
+    last_Name!: string;
+    date_Birthday!: Date;
+    gender!: string;
+    address!: string;
+    email!: string;
+    password!: string;
+    role!: Role;
+    photo!: string;
+    phone_Number!: string;
+    is_Activated!: boolean;
+    created_At!: Date;
     reservations?: Reservation[];
-    compteBancaire?: CompteBancaire;
+    
     paiement?: Paiement;
   }
   

@@ -29,9 +29,19 @@ export class ComptebancaireService {
     return this.http.delete<CompteBancaire>(this.url+"/deletecomptebancaire/"+id);
   }
 
+  updateCompteBancaire(compte: any): Observable<any> {
+    return this.http.put(`${this.url}/updatecomptebancaire/${compte.idCompteBancaire}`, compte);
+  }
+
+
   getUsers() :Observable<User[]>
   {
     return this.http.get<User[]>("http://localhost:8089/skillswap/api/users");
+  }
+
+  getUserById(id:number) :Observable<User>
+  {
+    return this.http.get<User>("http://localhost:8089/skillswap/api/users"+id);
   }
 
   

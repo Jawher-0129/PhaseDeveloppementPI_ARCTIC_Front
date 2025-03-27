@@ -9,12 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListComptebancaireComponent } from './list-comptebancaire/list-comptebancaire.component';
 import { DetailscomptebancaireComponent } from './detailscomptebancaire/detailscomptebancaire.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { UpdatecomptebancaireComponent } from './updatecomptebancaire/updatecomptebancaire.component';
 @NgModule({
   declarations: [
     AppComponent,
     AddCompteBancaireComponent,
     ListComptebancaireComponent,
-    DetailscomptebancaireComponent
+    DetailscomptebancaireComponent,
+    UpdatecomptebancaireComponent
   ],
   imports: [
     BrowserModule,

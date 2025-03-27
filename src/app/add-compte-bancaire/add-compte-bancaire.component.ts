@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ComptebancaireService } from '../comptebancaire.service';
 import { CompteBancaire } from '../core/models/CompteBancaire';
 import { User } from '../core/models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-compte-bancaire',
@@ -18,7 +19,7 @@ export class AddCompteBancaireComponent {
   users: User[] = []; 
 
   
-  constructor( private comptebancaireService: ComptebancaireService) {
+  constructor( private comptebancaireService: ComptebancaireService,private router:Router) {
   }
 
   ngOnInit(): void {
@@ -52,6 +53,7 @@ export class AddCompteBancaireComponent {
     this.comptebancaireService.addCompteBancaire(compteData).subscribe(
       (data) => {
         console.log("Compte bancaire ajouté avec succès :", data);
+        this.router.navigate(['listcomptebancaire'])
       },
       (error) => {
         console.error("Erreur lors de l'ajout du compte bancaire :", error);

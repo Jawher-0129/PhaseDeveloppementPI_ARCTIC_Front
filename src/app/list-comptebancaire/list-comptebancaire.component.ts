@@ -11,11 +11,7 @@ import { Router } from '@angular/router';
 export class ListComptebancaireComponent {
 
   comptes!:CompteBancaire[];
-
-
   i:number=0
-
-
    constructor(private comptebancaireService: ComptebancaireService,private router:Router) 
    { }
 
@@ -33,8 +29,6 @@ export class ListComptebancaireComponent {
     )
   }
 
-
-
   voirDetails(id:any)
   {
     id=Number(id)
@@ -44,8 +38,28 @@ export class ListComptebancaireComponent {
   supprimerCompte(id:any)
   {
     id=Number(id)
-    
+    this.comptebancaireService.deleteCompteBancaire(id).subscribe(
+      data =>{
+        console.log(data)
+        console.log("deleted")
+        this.comptes = this.comptes.filter(compte => compte.idCompteBancaire !== id);
 
+      },
+      error=>{
+        console.log(error)
+      }
+    )
+  }
+
+  ajouter()
+  {
+    this.router.navigate(['addcomptebancaire'])
+  }
+
+  modifierCompte(id:any)
+  {
+    id=Number(id)
+    this.router.navigate(['updatecomptebancaire',id])
   }
 
   

@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Modifier un Compte Bancaire</h2>
+    
+    <div class="card shadow p-4" *ngIf="compte">
+      <form [formGroup]="comptebancaireForm" (ngSubmit)="update()">
+        <!-- Champ Montant -->
+        <div class="form-group mb-3">
+          <label for="montant" class="form-label">Montant</label>
+          <input type="number" 
+                 class="form-control" 
+                 id="montant" 
+                 formControlName="montant"
+                 [class.is-invalid]="comptebancaireForm.get('montant')?.invalid && comptebancaireForm.get('montant')?.touched">
+          
+          <div *ngIf="comptebancaireForm.get('montant')?.invalid && comptebancaireForm.get('montant')?.touched" class="invalid-feedback">
+            <div *ngIf="comptebancaireForm.get('montant')?.errors?.['required']">
+              Le montant est obligatoire
+            </div>
+            <div *ngIf="comptebancaireForm.get('montant')?.errors?.['min']">
+              Le montant doit être positif
+            </div>
+          </div>
+        </div>
+  
+        <!-- Sélection de l'utilisateur -->
+        <div class="form-group mb-4">
+          <label for="userId" class="form-label">Propriétaire du compte</label>
+          <select class="form-select" 
+                  id="userId" 
+                  formControlName="userId"
+                  [class.is-invalid]="comptebancaireForm.get('userId')?.invalid && comptebancaireForm.get('userId')?.touched">
+            <option value="" disabled>Choisir un utilisateur</option>
+            <option *ngFor="let user of users" [value]="user.id_User">
+              {{ user.first_name }} {{ user.last_Name }}
+            </option>
+          </select>
+          
+          <div *ngIf="comptebancaireForm.get('userId')?.invalid && comptebancaireForm.get('userId')?.touched" class="invalid-feedback">
+            Veuillez sélectionner un utilisateur
+          </div>
+        </div>
+  
+        <!-- Boutons -->
+        <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-1"></i> Retour
+          </button>
+          
+          <button type="submit" class="btn btn-primary" [disabled]="comptebancaireForm.invalid">
+            <i class="fas fa-save me-1"></i> Enregistrer
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
