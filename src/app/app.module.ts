@@ -10,13 +10,18 @@ import { ListComptebancaireComponent } from './list-comptebancaire/list-compteba
 import { DetailscomptebancaireComponent } from './detailscomptebancaire/detailscomptebancaire.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { UpdatecomptebancaireComponent } from './updatecomptebancaire/updatecomptebancaire.component';
+import { AddReservationComponent } from './add-reservation/add-reservation.component';
+import { AddPaiementComponent } from './add-paiement/add-paiement.component';
 @NgModule({
   declarations: [
     AppComponent,
     AddCompteBancaireComponent,
     ListComptebancaireComponent,
     DetailscomptebancaireComponent,
-    UpdatecomptebancaireComponent
+    UpdatecomptebancaireComponent,
+    AddReservationComponent,
+    AddPaiementComponent,
+    
   ],
   imports: [
     BrowserModule,

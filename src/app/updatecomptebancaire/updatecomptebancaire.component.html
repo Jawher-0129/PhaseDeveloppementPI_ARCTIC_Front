@@ -3,7 +3,6 @@
     
     <div class="card shadow p-4" *ngIf="compte">
       <form [formGroup]="comptebancaireForm" (ngSubmit)="update()">
-        <!-- Champ Montant -->
         <div class="form-group mb-3">
           <label for="montant" class="form-label">Montant</label>
           <input type="number" 
